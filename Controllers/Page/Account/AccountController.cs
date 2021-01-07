@@ -88,7 +88,7 @@ namespace CarBooking.Page.Controllers
                     else
                     {
 
-                        return RedirectToAction("index", "home");
+                        return RedirectToAction("index", "dashboard");
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Sai tên đăng nhập hoặc mật khẩu");

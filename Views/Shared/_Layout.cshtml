@@ -43,7 +43,7 @@
                 <li class="nav__item"><a href="/about" class="nav__link">Giới thiệu</a></li>
                 <li class="nav__item"><a href="/contact" class="nav__link">Liên hệ</a></li>
 
-                @if(SignInManager.IsSignedIn(User))
+                @* @if(SignInManager.IsSignedIn(User))
                 {
                     <li class="nav__item">
                         <form method="post" asp-action="logout" asp-controller="account">
@@ -55,7 +55,7 @@
                 }
                 else{
                  <li class="nav__item"><a asp-action="login" asp-controller="account" class="nav__link hotline">Đăng nhập</a></li>
-                }
+                } *@
             </ul>
         </div>
     </nav>  
