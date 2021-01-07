@@ -1,0 +1,83 @@
+@model PaginateList<CarBooking.Models.Post>
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Tin tức";
+    
+}
+
+
+<!-- Main -->
+
+<div class="container" style="margin-top:70px">
+     <h2 class="about__heading display-4 my-5 py-3">
+                TIN MỚI
+            </h2>
+          
+
+@foreach (var item in  Model)
+{
+<div id="blog-content" class="card card-cascade wider reverse mb-5">
+  <div class="view view-cascade overlay">
+    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Thumbnail)"
+      alt="Card image cap">
+    <a href="/blog/detail/@Html.DisplayFor(modelItem => item.Id)">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center mb-5">
+    <!-- Title -->
+    <h4 class="card-title"><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h4>
+    <strong>@Html.DisplayFor(modelItem => item.CreatedAt)</strong>
+    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)
+    </p>
+
+  </div>
+  </div>
+    
+}
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+</div>
+
+</div>
+
+
+
+<!-- Card -->
+
+@section Css{
+    <style>
+        #blog-content p{
+            font-size: 14px !important;
+        }
+        #blog-content h4{
+            font-size: 20px !important;
+        }
+        #blog-content h6{
+            font-size: 18px !important;
+        }
+
+        .pagination a{
+            font-size: 16px !important;
+        }
+    </style>
+}

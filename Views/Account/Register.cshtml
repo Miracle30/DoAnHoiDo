@@ -1,0 +1,78 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Đăng ký";
+}
+@model RegisterViewModel
+
+<div class="container" style="margin-top:80px">
+    
+<!-- Material form register -->
+
+<div class="row">
+    <div class="col-8 mx-auto">
+        <div class="card" style="font-size: 120%">
+
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong style="font-size:18px">Đăng ký tài khoản</strong>
+            </h5>
+
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+
+                <!-- Form -->
+                <form class="text-center"  style="color: #757575; font-size:100%" action="/account/register" method="post">
+                    <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormFullName" class="form-control"  asp-for="FullName">
+                                <label for="materialRegisterFormFullName"asp-for="FullName">Họ tên</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="md-form mt-0">
+                        <input type="email" id="materialRegisterFormEmail" class="form-control" asp-for="Email">
+                        <label for="materialRegisterFormEmail" asp-for="Email">Email</label>
+                    </div>
+
+                    <div class="md-form mt-0">
+                        <input type="text" id="materialRegisterFormUserNamel" class="form-control" asp-for="UserName">
+                        <label for="materialRegisterFormUserNamel" asp-for="UserName">Tài khoản</label>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="md-form">
+                        <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" asp-for="Password">
+                        <label for="materialRegisterFormPassword asp-for="Password"">Mật khẩu</label>
+                    </div>
+
+                    <div class="md-form">
+                        <input type="password" id="materialRegisterFormPasswordRe" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" asp-for="ConfirmPassword">
+                        <label for="materialRegisterFormPasswordRe" asp-for="ConfirmPassword">Nhập lại mật khẩu</label>
+                    </div>
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit" name="submit">Đăng ký</button>
+                </form>
+                <!-- Form -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Material form register -->
+</div>
+
+@section Css{
+    <style>
+
+    </style>
+}
+
+@section Script{
+
+}

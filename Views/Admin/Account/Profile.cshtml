@@ -1,0 +1,168 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Hồ sơ";
+}
+@model ApplicationUser
+  <main>
+    <div class="container-fluid">
+
+      <!-- Section: Edit Account -->
+      <section class="section">
+        <!-- First row -->
+        <div class="row">
+          <!-- First column -->
+          <div class="col-lg-4 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade narrower">
+
+              <!-- Card image -->
+              <div class="view view-cascade gradient-card-header py-2 pl-2">
+                <h5 class="mb-0 font-weight-bold">Ảnh hồ sơ</h5>
+              </div>
+              <!-- Card image -->
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade text-center">
+                <img id="profile-avatar" style="width:80px" src="@Model.Avatar" />
+
+                <p class="text-muted"><small>Admin</small></p>
+                <div class="form-upload row flex-center position-relative">
+                  <input type="file" name="file" class="position-absolute">
+                  <button class="btn btn-info btn-rounded btn-sm">Cập nhật</button><br>
+                </div>
+              </div>
+              <!-- Card content -->
+
+            </div>
+            <!-- Card -->
+
+          </div>
+          <!-- First column -->
+
+          <!-- Second column -->
+          <div class="col-lg-8 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade narrower">
+
+              <!-- Card image -->
+              <div class="view view-cascade gradient-card-header py-2 pl-2">
+                <h5 class="mb-0 font-weight-bold">Cập nhật thông tin</h5>
+              </div>
+              <!-- Card image -->
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade text-center">
+
+            <!-- Edit Form -->
+                <form asp-action="Profile" asp-controller="Admin">
+                  <!-- First row -->
+
+                  <div class="row">
+
+                    <!-- First column -->
+                    <!-- Second column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" id="form2" class="form-control validate" asp-for="FullName">
+                        <label for="form2" data-error="wrong" data-success="right" asp-for="FullName">Họ tên</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" id="form2" class="form-control validate" asp-for="Email">
+                        <label for="form2" data-error="wrong" data-success="right" asp-for="Email">Email</label>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- First row -->
+
+                  <!-- First row -->
+                  <div class="row">
+                    <!-- First column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="password" id="form81" class="form-control validate" asp-for="Password">
+                        <label for="form81" data-error="wrong" data-success="right" asp-for="Password">Mật khẩu</label>
+                      </div>
+                    </div>
+
+                    <!-- Second column -->
+                    <div class="col-md-6">
+                      <div class="md-form mb-0">
+                        <input type="text" id="form82" class="form-control validate" asp-for="PhoneNumber">
+                        <label for="form82" data-error="wrong" data-success="right" asp-for="PhoneNumber">Số điện thoại</label>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <!-- Fourth row -->
+                  <div class="row">
+                    <div class="col-md-12 text-center my-4">
+                      <input type="submit" value="Cập nhật" class="btn btn-info btn-sm btn-rounded">
+                    </div>
+                  </div>
+                  <!-- Fourth row -->
+
+                </form>
+                <!-- Edit Form -->
+
+              </div>
+              <!-- Card content -->
+
+            </div>
+            <!-- Card -->
+
+          </div>
+          <!-- Second column -->
+
+        </div>
+        <!-- First row -->
+
+      </section>
+      <!-- Section: Edit Account -->
+
+    </div>
+
+  </main>
+  <!-- Main layout -->
+  @section Css{ 
+    <style>
+       .form-upload input[type="file"]{
+         width: 100px;
+         z-index: 999;
+         opacity: 0;
+       }
+    </style>
+  }
+  @section Script{
+      <script>
+
+        var root = window.location.protocol + window.location.host;
+        let inputEditAvatar = document.querySelector('.form-upload input[type="file"]');
+        inputEditAvatar.addEventListener('change', function() {
+        
+        let avatar = document.querySelector('#profile-avatar');
+        
+        var url = "/admin/updateAvatar";
+            var formData = new FormData();
+            formData.append("userId" , @Model.Id);
+            formData.append("avatar", inputEditAvatar.files[0]);
+
+        fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    avatar.setAttribute("src", "http:\\\\localhost:5000\\"+ data.dbPath);
+                    
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        })
+      </script>
+  }

@@ -1,0 +1,318 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Trang chủ";
+}
+
+ <!-- HEADER  -->
+    <header class="header">
+        <div class="container d-flex justify-content-between align-items-center h-100 text-center">
+            <div class="header__content mx-auto">
+                <div class="header__heading">
+                    Hành trình hạnh phúc - muôn nẻo yêu thương
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <!-- BANNER  -->
+
+    <div class="banner">
+        <div class="container">
+            <h2 class="banner__heading heading">
+                <h1>Wander Lust - Đường về nhà là vào tim ta</h1>
+            </h2>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="banner__item">
+                        <img class="img-fluid" src="./assets/images/banner1.jpg" alt=""
+                            class="banner__item-img">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="banner__item">
+                        <img class="img-fluid" src="./assets/images/banner2.jpg" alt="" class="banner__item-img">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="banner__item">
+                        <img class="img-fluid" src="./assets/images/banner3.jpg" alt=""
+                            class="banner__item-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICE  -->
+    @* <div class="service">
+        <div class="container">
+            <h2 class="service__heading heading">
+                <h1>Hệ thống vé xe khách WanderLust</h1>
+            </h2>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <div class="service__item d-flex justify-content-center">
+                        <div class="d-flex">
+                            <img src="./assets/images/static-icon-1.svg" alt="" class="service__item-img">
+                            <div class="service__item-content ">
+                                <h4 class="service__item-qty">
+                                    5000+
+                                </h4>
+                                <span class="service__title">
+                                    Tuyến đường
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="service__item d-flex justify-content-center">
+                        <div class="d-flex">
+                            <img src="./assets/images/static-icon-2.svg" alt="" class="service__item-img">
+                            <div class="service__item-content ">
+                                <h4 class="service__item-qty">
+                                    10+
+                                </h4>
+                                <span class="service__title">
+                                    Nhà xe
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="service__item d-flex justify-content-center">
+                        <div class="d-flex">
+                            <img src="./assets/images/static-icon-3.svg" alt="" class="service__item-img">
+                            <div class="service__item-content ">
+                                <h4 class="service__item-qty">
+                                    500+
+                                </h4>
+                                <span class="service__title">
+                                    Đại lý bán vé
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="service__item d-flex justify-content-center">
+                        <div class="d-flex">
+                            <img src="./assets/images/static-icon-4.svg" alt="" class="service__item-img">
+                            <div class="service__item-content ">
+                                <h4 class="service__item-qty">
+                                    6+
+                                </h4>
+                                <span class="service__title">
+                                    Bến xe
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> *@
+
+    <!-- ROOM HOT -->
+    @* <div class="room-hot">
+        <div class="container">
+            <h2 class="room-hot__heading heading">
+                <h1>Vé sale</h1>
+            </h2>
+            <div class="row">
+
+                @foreach (var item in  ViewBag.Tickets)
+                {
+                    <div class="col-12 col-md-3">
+                        <div class="room-hot__item">
+                            <div class="room-hot__img">
+                                <img class="img-fluid" src="@item.Car.Thumbnail" alt="">
+                            </div>
+                            <h2 class="room-hot__title">                           
+                                @item.Route.StartPoint - @item.Route.EndPoint
+                            </h2>
+                            <p class="room-hot__price">
+                                @item.Price vnđ
+                            </p>
+                            <div class="room-hot__author d-flex justify-content-between ">
+                                <span class="room-hot__author-name">
+                                    <i class="far fa-smile"></i>
+                                    <a href="">
+                                        @item.User.FullName
+                                    </a>
+                                </span>
+                                <span class="room-hot__author-phone">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    @item.User.Phone
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                } *@
+                @* <div class="col-12 col-md-3">
+                    <div class="room-hot__item">
+                        <div class="room-hot__img">
+                            <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfaOK3vQCkfm6-H_wvedkuhIL7u1K4ZqfE0yeqTWWH9FfQzo4c&usqp=CAU" alt="">
+                        </div>
+                        <h2 class="room-hot__title">
+                            Xe giường nằm Limo Pes 102 giường nằm
+                        </h2>
+                        <p class="room-hot__price">
+                            400.000 đ
+                        </p>
+                        <div class="room-hot__author d-flex justify-content-between ">
+                            <span class="room-hot__author-name">
+                                <i class="far fa-smile"></i>
+                                <a href="">
+                                    Nguyễn Văn B
+                                </a>
+                            </span>
+                            <span class="room-hot__author-phone">
+                                <i class="fas fa-mobile-alt"></i>
+                                0345678900
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="room-hot__item">
+                        <div class="room-hot__img">
+                            <img class="img-fluid" src="https://hyundaianlac.vn/wp-content/uploads/2016/06/Xe-giuong-nam-hyundai-universe.jpg" alt="">
+                        </div>
+                        <h2 class="room-hot__title">                       
+                            Xe Khách Limo Uni 01 Giường Nằm
+                        </h2>
+                        <p class="room-hot__price">
+                            300.000 đ
+                        </p>
+                        <div class="room-hot__author d-flex justify-content-between ">
+                            <span class="room-hot__author-name">
+                                <i class="far fa-smile"></i>
+                                <a href="">
+                                    Nguyễn Văn C
+                                </a>
+                            </span>
+                            <span class="room-hot__author-phone">
+                                <i class="fas fa-mobile-alt"></i>
+                                0984567309
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="room-hot__item">
+                        <div class="room-hot__img">
+                            <img class="img-fluid" src="https://dulichlive.com/thai-lan/wp-content/uploads/sites/4/2019/09/Xe-khach-Viet-Nam-Thai-Lan-uy-tin-chat-luong.jpg" alt="">
+                        </div>
+                        <h2 class="room-hot__title">
+                            Xe Khách Limo Uni 02 Giường Nằm
+                        </h2>
+                        <p class="room-hot__price">
+                            300.000 đ
+                        </p>
+                        <div class="room-hot__author d-flex justify-content-between ">
+                            <span class="room-hot__author-name">
+                                <i class="far fa-smile"></i>
+                                <a href="">
+                                    Nguyễn Văn D
+                                </a>
+                            </span>
+                            <span class="room-hot__author-phone">
+                                <i class="fas fa-mobile-alt"></i>
+                                0943999099
+                            </span>
+                        </div>
+                    </div>
+                </div> 
+
+
+            </div>
+        </div>
+    </div> *@
+
+    <!-- NEWS  -->
+
+    <div class="news">
+        <div class="container">
+            <h2 class="news__heading heading">
+                <h1>Tin tức</h1>
+            </h2>
+            <div class="row">
+
+            @foreach (var item in ViewBag.Posts)
+                {
+                    <div class="col-12 col-md-3">
+                        <div class="news__item">
+                            <div class="news__img">
+                                <img class="img-fluid" src="@item.Thumbnail" alt="">
+                            </div>
+                            <h2 class="news__title">
+                                <a href="/blog/detail/@item.Id">
+                                    @item.Title
+                                </a>
+                            </h2>
+                            <div class="news__description">
+                                @item.Description
+                            </div>
+                        </div>
+                    </div>
+                
+                }
+                @* <div class="col-12 col-md-3">
+                    <div class="news__item">
+                        <div class="news__img">
+                            <img class="img-fluid" src="https://saodieu.vn/media/product/45/1496044078_thue-xe-giuong-nam-ha-noi-quang-binh-phong-nha-hue-da-nang-hoi-an-14.jpg" alt="">
+                        </div>
+                        <h2 class="news__title">
+                            Lorem ipsum dolor sit amet.
+                        </h2>
+                        <div class="news__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, enim.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="news__item">
+                        <div class="news__img">
+                            <img class="img-fluid" src="https://megabus.vn/wp-content/uploads/2017/07/sapa-shuttle-bus-8-1024x683.jpg" alt="">
+                        </div>
+                        <h2 class="news__title">
+                            Lorem ipsum dolor sit amet.
+                        </h2>
+                        <div class="news__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, enim.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="news__item">
+                        <div class="news__img">
+                            <img class="img-fluid" src="https://dixere.vn/wp-content/uploads/2019/11/nhaxe_hungvinh_result.jpg" alt="">
+                        </div>
+                        <h2 class="news__title">
+                            Lorem ipsum dolor sit amet.
+                        </h2>
+                        <div class="news__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, enim.
+                        </div>
+                    </div>
+                </div> *@
+
+            </div>
+        </div>
+    </div>
+
+    @section Script{
+     <script>
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            const now = new Date();
+            $("#datepicker").val(now.toLocaleDateString('en-GB'));
+        });
+
+    </script>
+    }

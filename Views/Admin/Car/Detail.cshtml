@@ -1,0 +1,147 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Chi tiết xe";
+}
+ 
+@model Car
+<!-- Card deck -->
+<div class="card-deck">
+
+    <div class="row w-100">
+        <div class="col-12">
+            <div class="card mb-4">
+
+                <form method="post" action="/admin/car/update/@Model.Id">
+                   <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+                    @if(!string.IsNullOrEmpty(ViewBag.message))
+                     {
+                         <div class="alert alert-success">@ViewBag.message</div>
+                     }
+                    <div class="card-body">
+                    <!--Title--> 
+                    <h4 class="card-title">Car #@Model.CarCode</h4>
+                    <!--Text-->
+                    <p class="card-text py-2 px-2" contenteditable="true">@Model.Description</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="card-text"><span class="d-inline-block" style="width:80px"> Lái xe:  </span>
+                            <select class="browser-default custom-select" name="Employees[0].Id">
+                                <option>Chọn lái xe</option>
+                                @foreach ( var item in ViewBag.MainDriver)   
+                                {
+                                    <option value="@item.Id">@item.FullName</option>
+                                    
+                                }
+                            </select>
+                            <p style="font-size:14px">@((ViewBag.CurrentMainDriver != null) ? ViewBag.CurrentMainDriver.FullName : "" )</p>
+                            <p class="card-text"><span class="d-inline-block" style="width:80px"> Phụ xe:  </span> 
+                                <select class="browser-default custom-select" name="Employees[1].Id">
+                                <option>Chọn phụ xe</option>
+                                @foreach (var item in ViewBag.SubDriver)
+                                {
+                                    <option value="@item.Id">@item.FullName</option>
+
+                                }
+                        
+                                  </select>
+
+                            </p>
+                            <p style="font-size:14px">@((ViewBag.CurrentSubDriver != null ) ? ViewBag.CurrentSubDriver.FullName : "" )</p>
+                            <p class="card-text"><span class="d-inline-block" style="width:80px"> Hành trình:  </span> 
+                            <select class="browser-default custom-select" name="routes">
+                                    <option>Chọn hành trình</option>
+                                    @foreach (var item in ViewBag.Routes)
+                                    {
+                                         <option value="@item.Id">@item.StartPoint - @item.EndPoint</option>
+                                    }
+                            </select>
+                            
+                            </p>
+                                <p class="card-text"><span class="d-inline-block" style="width:80px"> Giá vé(vnđ): </span>
+                                    <input type="text" class="browser-default custom-select" name="ticketPrice">
+                                    <p>
+                            <p class="card-text"><span class="d-inline-block" style="width:80px"> Trạng thái: </span> 
+                            <select class="browser-default custom-select" asp-for="@Model.StatusCar"> 
+                                    <option selected>Chọn trạng thái</option>
+                                    <option value="0">@StatusCar.Maintenance</option>
+                                    <option value="1">@StatusCar.Ready</option>
+                                    <option value="2">@StatusCar.Running</option>
+                            </select>
+                            </p>
+
+                        </div>
+                        <div class="col-4">
+                        
+                                <p class="card-text"><span class="d-inline-block" style="width:100px"> Tổng số ghế: </span>
+                                    <input type="text" class="browser-default custom-select" asp-for="@Model.SeatNumber">
+                                <p>
+                                <p class="card-text"><span class="d-inline-block" style="width:100px"> Số ghế còn lại: </span>
+                                    <input type="text" class="browser-default custom-select" disabled asp-for="@Model.SeatNumberRest">
+                                <p>
+
+                        </div>
+                        <div class="col-4">
+                            <ul class="row">
+                                <li class="mb-2 ml-2"><img style="width:50px" src="@Model.Thumbnail" alt=""></li>
+                                @foreach (var item in Model.CarImages)
+                                {
+                                    <li class="mb-2 ml-2">
+                                        <img src="@item.Url" alt="" width="50px">
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+
+                
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <button type="submit" class="btn btn-light-blue btn-md mt-4">Cập nhật</button>
+
+                </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  <!-- Card -->
+
+  <!-- Card -->
+
+
+
+</div>
+
+
+@section Css{
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css">
+    <style>
+        .browser-default.custom-select {
+           width: 202px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+}
+
+
+@section Script{
+    <script src="~/assets/js/jquery.timepicker.min.js"></script>
+     <script>
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            const now = new Date();
+            $("#datepicker").val(now.toLocaleDateString('en-GB'));
+        });
+
+        $('#timeformatExample1').timepicker({ 'timeFormat': 'H:i:s' });
+        $('#timeformatExample2').timepicker({ 'timeFormat': 'H:i:s' });
+
+    </script>
+}

@@ -1,0 +1,242 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Chi tiết xe";
+}
+ 
+@model TicketViewModel
+<!-- Card deck -->
+<div class="card-deck">
+
+    <div class="row w-100">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <h5 class="ml-3">Chi tiết vé #@Model.Id</h5>
+                <a href="/admin/ticket/list/@Model.RouteId" class="btn btn-primary"><i class="fas fa-angle-left"></i></a>
+            </div>
+                    <div class="card mb-4">
+                        <div class="row">
+                            <div class="col-5">
+                                <form method="post" action="/admin/ticket/update/@Model.Id">
+                                <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+                                    @if(!string.IsNullOrEmpty(ViewBag.message))
+                                    {
+                                        <div class="alert alert-success">@ViewBag.message</div>
+                                    }
+                                        <div class="ticket mx-3 mb-3" onclick="detail(@Model.Id)">
+                                <div class="ticket__content"> 
+                                    @if((int)Model.StatusTicket == 1){
+
+                                    <p  class="status-ticket success ">
+                                    <a href="" class="">Đã đặt</a>
+                                    </p>
+
+                                    }
+                                    else if( (int)Model.StatusTicket == 0){
+                                    <p  class="status-ticket warning ">
+                                        <a href="" class="">Trống</a>
+                                    </p>
+                                    }
+                                    else{
+                                        <p  class="status-ticket danger">
+                                        <a href="" class="">Hủy</a>
+                                    </p>
+                                    }
+                                    <p class="text-center pt-4">@Model.SeatNumberId</p>
+                                    <div class="px-3">
+                                        <p >@Model.Price đ</p>
+                                        <p >@Model.Name</p>
+                                        <p >@Model.Address</p>
+                                        <p ></p>
+                                        <p >@ViewBag.route.StartPoint - @ViewBag.route.EndPoint</p>
+                                        <p style="font-size:14px">@(ViewBag.route.TimeStart.ToString("HH:MM tt - dd/MM/yyyy"))</p>
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                </div>
+                                    <div class="card-body">
+                                            <div>   
+                                                        <select class="browser-default custom-select" name="CustomerId">
+                                                <option value="0">Chọn khách hàng</option>
+                                            @foreach (var bookTicket in Model.BookTickets){
+                                                    <option value="@bookTicket.Id">@bookTicket.FullName</option>                                         
+
+                                                }
+
+                                            
+                                            </select>      
+                                            </div>
+                                            <div>   
+                                             <select class="browser-default custom-select mt-3" name="StatusTicket">
+                                                <option value="@StatusTicket.Pendding" selected="@(Model.StatusTicket == StatusTicket.Pendding ? true : false)">Chọn trạng thái</option>
+                                                <option value="@StatusTicket.NotUsed" selected="@(Model.StatusTicket == StatusTicket.NotUsed ? true : false)">
+                                                    Trống
+                                                </option>
+                                                <option value="@StatusTicket.Used" selected="@(Model.StatusTicket == StatusTicket.Used ? true : false)">
+                                                    Thêm khách hàng
+                                                </option>
+                                                <option value="@StatusTicket.Cancel" selected="@(Model.StatusTicket == StatusTicket.Cancel ? true : false)">
+                                                    Hủy bỏ
+                                                </option>
+                                            </select>      
+                                            </div>
+                                    <button type="submit" class="btn btn-light-blue btn-md mt-4 mx-0">Cập nhật</button>
+
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                            <div class="col-7 mt-4">
+                                @if(Model.BookTickets.Count > 0)
+                                {
+                                    <p>Khách đặt vé :</p>
+                                    @foreach(var item in Model.BookTickets){
+                                        <ul>
+                                            <li>
+                                                @item.FullName
+                                            </li>
+                                            <li>
+                                                @item.Phone
+                                            </li>
+                                            <li>
+                                                @item.Email
+                                            </li>
+                                            <li>
+                                                @item.CreatedAt.ToString("HH:mm - d / M / yyyy")    
+                                            </li>
+                                        </ul>
+                                        <hr/>
+                                    }
+
+                                }
+                            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Card -->
+
+  <!-- Card -->
+
+
+
+</div>
+
+
+@section Css{
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css">
+    <style>
+        .browser-default.custom-select {
+           width: 202px;
+        }
+        li{
+            list-style: none;
+        }
+         <style>
+        .ticket p{
+            font-size: 14px;
+        }
+         .ticket {
+        position: relative;
+        box-sizing: border-box;
+        width: 223px;
+        height: 350px;  
+        padding: 20px;
+        border-radius: 10px;
+        background: #fbfbfb;
+        cursor: pointer;
+    }
+        .ticket:before, .ticket:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            height: 6px;
+            width: 190px;
+        }
+        .ticket:before {
+            top: -5px;
+            background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -8px / 16px 16px repeat-x;
+        }
+        .ticket:after {
+            bottom: -5px;
+            background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -2px / 16px 16px repeat-x;
+        }
+        .ticket__content {
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            border: 6px solid #d8d8d8;
+            position: relative;
+        }
+        .status-ticket{
+            display: inline-block;
+            text-align: center;
+            width: 50px;
+            position: absolute;
+            right: -5px;
+            top: -5px; 
+            padding: 0 10px;
+            font-size: 10px;
+        }
+
+        .status-ticket.success{
+            background: #20c997;
+
+        }
+        .status-ticket.warning{
+            background: #ffc107 ;
+        }
+
+        .status-ticket.danger{
+            background: #dc3545 ;
+        }
+        .status-ticket a{
+            font-size: 10px;
+            color: white;
+        }
+
+
+            .ticket-alert{
+             position:absolute;
+             right:10px;
+             bottom:10px;
+             cursor: pointer;
+         }
+         .modal-alert{
+             top: 7px;
+            right: 32px;
+            width: 200px;
+            background: #fff3b5;
+            padding: 15px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px  #3332;
+            font-size: 14px;
+            z-index: 999;
+            display: none;
+         }
+    </style>
+    </style>
+}
+
+
+@section Script{
+    <script src="~/assets/js/jquery.timepicker.min.js"></script>
+     <script>
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            const now = new Date();
+            $("#datepicker").val(now.toLocaleDateString('en-GB'));
+        });
+
+        $('#timeformatExample1').timepicker({ 'timeFormat': 'H:i:s' });
+        $('#timeformatExample2').timepicker({ 'timeFormat': 'H:i:s' });
+
+    </script>
+}

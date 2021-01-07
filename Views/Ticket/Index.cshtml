@@ -1,0 +1,447 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Vé xe";
+}
+@model List<TicketViewModel>
+@section Css{
+    <style>
+        .result-item__detail-desc{
+            display: none;
+        }
+        .result-item__detail-desc.active{
+            display: block;
+        }
+        .form-book input{
+            font-size: 14px !important;            
+        }
+    </style>
+
+}
+<div class="search-rs__header">
+        <div class="container">
+            <ul class="search-rs__header-list d-flex">
+                <li class="search-rs__header-item">
+                    <a href="" class="search-rs__header-link">
+                        Vé xe khách
+                    </a>
+                </li>
+                <li class="search-rs__header-item">
+                    <a href="" class="search-rs__header-link">
+                        Xe đi từ A
+                    </a>
+                </li>
+                <li class="search-rs__header-item">
+                    <a href="" class="search-rs__header-link">
+                        Xe đi đến B
+                    </a>
+                </li>
+            </ul>
+            <div class="header__content">
+                <form class="header__form-search d-flex justify-content-center">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <select class="select-start-point header__form-search-input" name="states[]"
+                            multiple="multiple">
+                            <optgroup label="Điểm đi">
+                                <option>Nha Trang</option>
+                                <option>TP HCM</option>
+                                <option>Nested option</option>
+                            </optgroup>
+                            <optgroup label="Điểm đến">
+                                <option>TP HCM</option>
+                                <option>Nha Trag</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <select class="select-end-point header__form-search-input" name="states[]" multiple="multiple">
+                            <optgroup label="Tỉnh thành phố">
+                                <option>Lâm Đồng</option>
+                                <option>TP HCM</option>
+                                <option>Nested option</option>
+                            </optgroup>
+                            <optgroup label="Quần huyện">
+                                <option>TPHCM</option>
+                                <option>Lâm Đồng</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="header__form-search-input-date-picker">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="text" class="header__form-search-input" id="datepicker">
+                    </div>
+                    <button class="btn btn-warning header__form-search-button m-0">Tìm Vé Xe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row ">
+            <!-- FILTER  -->
+            @* <div class="col-3 px-3">
+                <header class="search-rs__filter d-flex justify-content-between">
+                    <span>Bộ tìm kiếm</span>
+                    <span>Xóa lọc</span>
+                </header>
+                <div class="search-rs__filter-main search-rs__filter-box">
+                    <div class="filter__main">
+                        <span class="filter__main-title mt-4">
+                            Tiêu chí phổ biến
+                        </span>
+                        <ul class="filter__main-list">
+                            <li class="filter__main-item d-flex align-items-center">
+                                <input id="filter-one" type="checkbox" class="mr-4" value="Xe an toàn Covid-19">
+                                <label for="filter-one">
+                                    Xe an toàn Covid-19
+                                </label>
+                            </li>
+                            <li class="filter__main-item d-flex align-items-center">
+                                <input id="filter-two" type="checkbox" class="mr-4" value="Xe an toàn Covid-19">
+                                <label for="filter-two">
+                                    Chuyến giảm giá
+                                </label>
+                            </li>
+                    
+                            <li class="filter__main-item d-flex align-items-center">
+                                <input id="filter-fourd" type="checkbox" class="mr-4" value="Xe an toàn Covid-19">
+                                <label for="filter-fourd">
+                                    Gì đó
+                                </label>
+                            </li>
+                            <li class="filter__main-item">
+                                <span class="filter__main-title">
+                                    
+                                </span>
+                           
+                            </li>
+                        </ul>
+                        <span class="filter__main-title">
+                            Giờ đi
+                        </span>
+                        <ul class="filter__main-time">
+                            <li class="filter__main-item-item">
+                                <p id="slider-range-time"></p>
+                                <p> 
+                                    <input type="text" id="amount" readonly
+                                        style="border:0; color:#007bff; font-weight:bold;">
+                                </p>
+                            </li>
+                        </ul>
+
+                        <span class="filter__main-title">
+                            Giá vé
+                        </span>
+                        <ul class="filter__main-price">
+                            <li class="filter__main-item-price">
+                                <p id="slider-range-price"></p>
+                                <p> 
+                                    <input type="text" id="price" readonly
+                                        style="border:0; color:#007bff; font-weight:bold;">
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div> *@
+            
+            <div class="col-9">
+                @foreach ( var item in Model)
+                {
+
+                    <div class="search-result__result">
+                    @* <ul class="search-result__result-filter-list mb-5 d-flex justify-content-between">
+                        <li class="search-result__result-filter-item">
+                            Sắp xếp theo:
+                        </li>
+                        <li class="search-result__result-filter-item">
+                            Giá thấp nhất
+                        </li>
+                        <li class="search-result__result-filter-item">
+                            Giá cao nhất
+                        </li>
+                    </ul> *@
+
+                    <div class="search-result__result-item">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="result-item__img">
+                                    <img class="img-fluid" src="@item.Car.Thumbnail" alt="">
+                                </div>
+                            </div>
+                            <div class="col-9 px-0">
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="result-item__title">
+                                        <a class="result-item__link" href="#">Xe khách Limo </a>
+                                        <span class="result-item__rate">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                    </h4>
+                                    <span class="result-item__price">
+                                     @item.Price.ToString("N3") đ
+                                    </span>
+                                </div>
+                                <p class="result-item__description">
+                                    Xe @item.Car.SeatNumber chỗ
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="result-item__time">
+                                        <div class="d-flex">
+                                            <svg class="TicketPC__LocationRouteSVG-sc-1mxgwjh-4 dSQflF"
+                                                xmlns="http://www.w3.org/2000/svg" width="14" height="74"
+                                                viewBox="0 0 14 74">
+                                                <path fill="none" stroke="#787878" stroke-linecap="round"
+                                                    stroke-width="2" stroke-dasharray="0 7" d="M7 13.5v46"></path>
+                                                <g fill="none" stroke="#484848" stroke-width="3">
+                                                    <circle cx="7" cy="7" r="7" stroke="none"></circle>
+                                                    <circle cx="7" cy="7" r="5.5"></circle>
+                                                </g>
+                                                <path
+                                                    d="M7 58a5.953 5.953 0 0 0-6 5.891 5.657 5.657 0 0 0 .525 2.4 37.124 37.124 0 0 0 5.222 7.591.338.338 0 0 0 .506 0 37.142 37.142 0 0 0 5.222-7.582A5.655 5.655 0 0 0 13 63.9 5.953 5.953 0 0 0 7 58zm0 8.95a3.092 3.092 0 0 1-3.117-3.06 3.117 3.117 0 0 1 6.234 0A3.092 3.092 0 0 1 7 66.95z"
+                                                    fill="#787878"></path>
+                                            </svg>
+                                            <ul class="result-item__endpoint pl-4">
+                                                <li class="result-item__start">
+                                                    @(item.TimeStart.HasValue ? item.TimeStart.Value.ToString("h:ss - dd/MM/yyyy") : "" ) • @item.StartPoint
+                                                </li>
+                                                <li class="result-item__time">
+                                                    🍀 🚃
+                                                    
+                                                </li>
+                                                <li class="result-item__over">
+                                                     @(item.TimeEnd.HasValue ? item.TimeEnd.Value.ToString("h:ss - dd/MM/yyyy") : "" ) • @item.Endpoint
+                                                </li>
+                                                
+                                            </ul>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="result-item__detail align-self-end">
+                                        <button class="btn btn-warning  btn-sm"  type="button" data-toggle="modal" data-target="#exampleModalLongSC-@item.Id">Đặt vé</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RESULT  -->
+    </div>
+    
+    @foreach (var item in Model)
+    {
+       <div class="modal fade" id="exampleModalLongSC-@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitleSC"
+      aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitleSC">Thông tin vé</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="text-center border border-light p-5 form-book" action="/ticket/book" method="post">
+
+                    <p class="h4 mb-4">Thông tin của bạn</p>
+                    <div class="alert-bookroom alert alert-success">
+						Chúng tôi sẽ liên lạc lại để xác nhận thông tin của bạn
+                    </div>  
+                                    <div class="alert-bookroom-err alert alert-danger">
+                                    Lỗi
+                    </div>  
+                    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Họ tên" name="FullName">
+
+                    <!-- Email -->
+                    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail" name="Email">
+
+                    <input type="text" id="defaultContactFormPhone" class="form-control mb-4" placeholder="Số điện thoại" name="Phone">
+                    
+                    <input type="text" id="defaultContactFormAdress" class="form-control mb-4" placeholder="Địa chỉ" name="Address">
+                    
+                    <input type="hidden" value="@item.Id" name="TicketId">
+                    <!-- Subject -->
+                    <label class="mb-4 d-block">Thông tin vé</label>
+                    <select class="browser-default custom-select mb-4" style="font-size:1.4rem; height:36px" name="SeatNumberId">
+                        <option value="" disabled>Chọn ghế</option>
+                         @foreach (var seat in item.Tickets.Where(s => s.StatusTicket == StatusTicket.NotUsed))
+                         {
+                             <option value="@seat.Id" selected>@seat.SeatNumberId</option>
+                         }
+                    </select>
+                    <div class="d-flex mt-4">
+                        <div class="row">
+                           @for (int i = 0; i <= item.Car.SeatNumber ; i++)
+                                {
+                                    
+                                    <div class="col-2">
+                                        @if(item.Tickets.ElementAtOrDefault(i) != null){
+                                            if(item.Tickets.ElementAtOrDefault(i).StatusTicket == StatusTicket.NotUsed ){
+                                                <button class="btn btn-sm " disabled style="font-size: 8px;">
+                                                   @item.Tickets.ElementAtOrDefault(i).SeatNumberId.Substring(item.Tickets.ElementAtOrDefault(i).SeatNumberId.IndexOf("G"))
+                                                </button>
+                                            }
+                                            else{
+                                                <button class="btn btn-sm btn-danger " disabled style="font-size: 8px;">
+                                                  @item.Tickets.ElementAtOrDefault(i).SeatNumberId.Substring(item.Tickets.ElementAtOrDefault(i).SeatNumberId.IndexOf("G"))
+                                                </button>
+                                            }
+                                        }
+                                        
+                                    </div>
+                                }
+                        </div>
+                    </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button class="bookroom btn btn-primary" type="button" >Đặt Vé</button>
+                </div>
+                </form>
+                </div>
+                </div>
+            </div>
+       </div>
+        
+    }
+
+    
+@section Script{
+    <script src="~/assets/js/select2.min.js"></script>
+       <script>
+
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            const now = new Date();
+            $("#datepicker").val(now.toLocaleDateString('en-GB'));
+        });
+
+
+        $(document).ready(function () {
+            $(".select-start-point").select2({
+                tags: "false",
+                placeholder: "Điểm xuất phát",
+                allowClear: true,
+            });
+            $(".select-end-point").select2({
+                tags: "false",
+                placeholder: "Điểm đến",
+                allowClear: true
+            });
+        });
+
+
+        $(function () {
+            $("#slider-range-time").slider({
+                range: "time",
+                value: 00,
+                min: 0,
+                max: 24,
+                slide: function (event, ui) {
+                    $("#amount").val("" + ui.value + ":00");
+                }
+            });
+            $("#amount").val($("#slider-range-time").slider("value") + ":00");
+        });
+
+        $(function () {
+            $("#slider-range-price").slider({
+                range: "price",
+                value: 00,
+                min: 1,
+                max: 20,
+                slide: function (event, ui) {
+                    $("#price").val("" + ui.value + "00.000 đ");
+                }
+            });
+            $("#price").val($("#slider-range-price").slider("value") + "00.000 đ");
+        });
+     $('.owl-carousel').owlCarousel({
+            items:4,
+            lazyLoad:true,
+            loop:true,
+            margin:10
+        });
+
+
+
+    </script>   
+    <script>
+
+        let bookRoom = document.querySelectorAll('.bookroom');
+		let alertBookRoom = document.querySelectorAll('.alert-bookroom');
+		let alertBookRoomErr = document.querySelectorAll('.alert-bookroom-err');
+		alertBookRoom.forEach((item,index) => {
+            item.style.display = 'none';
+        })
+		alertBookRoomErr.forEach((item,index) => {
+            item.style.display = 'none';
+        })
+    	function addBookRoom(item,index) {
+		let url = "/ticket/book";
+		let fullname = document.querySelectorAll('input[name="FullName"]');
+		let phone = document.querySelectorAll('input[name="Phone"]');
+		let Address = document.querySelectorAll('input[name="Address"]');
+		let email = document.querySelectorAll('input[name="Email"]');
+		let ticketId = document.querySelectorAll('input[name="TicketId"]');
+		let SeatNumberId = document.querySelectorAll('select[name="SeatNumberId"]');
+	
+		let data = {
+			Email: email[index].value,
+			Phone: phone[index].value,
+			FullName: fullname[index].value,
+			Address: Address[index].value,
+            SeatNumberId: SeatNumberId[index].value,
+			TicketId: ticketId[index].value,
+		};
+		fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data == 1) {
+					alertBookRoom[index].style.display = 'block';
+					FullName.value              = '';
+					Phone.value                 = '';
+					Email.value                 = '';
+					Address.value                 = '';
+					thoi_gian_dat.value         = '';
+					setTimeout(() => {
+						alertBookRoom.style.display = 'none';
+		
+					},10000)
+					
+				}
+                else{
+                    alertBookRoomErr[index].style.display = 'block'; 
+                    alertBookRoomErr[index].innerHTML = data[0][0].errorMessage;
+                    console.log( alertBookRoomErr[index]);
+					setTimeout(() => {
+						alertBookRoomErr[index].style.display = 'none';
+					},10000)
+                }
+			
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+	bookRoom.forEach((item,index) => {
+        item.addEventListener('click',() => {addBookRoom(item, index)});
+    })
+	</script>
+
+}

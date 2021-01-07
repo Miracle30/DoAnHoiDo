@@ -1,0 +1,172 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Route - Create";
+}
+@model Route
+<h4>Thêm mới lộ trình</h4>
+
+<!-- Default form subscription --> 
+ <div class="row">
+     <div class="col-md-6 mx-auto">
+        <form class="text-center border border-light p-5" method="post" action="/admin/route/create" >
+            <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+
+            @if(!string.IsNullOrEmpty(ViewBag.message))
+             {
+                 <div class="alert alert-success">@ViewBag.message</div>
+             }
+
+         
+            <select  id="defaultSubscriptionFormStartPoint" class="form-control mb-4" placeholder="Điểm xuất phát" asp-for="StartPoint">
+                <option class="form-control" value="">Điểm xuất phát</option>
+            </select>
+            <select  id="defaultSubscriptionFormStartPoint" class="form-control mb-4" placeholder="Điểm xuất phát" asp-for="EndPoint">
+                   <option class="form-control" value="">Điểm đến</option>
+            </select>
+            <input type="text" id="defaultSubscriptionFormStartPoint" class="form-control mb-4" placeholder="Khoảng cách (km)" asp-for="Range">
+              <p class="card-text text-left">
+                                <span class="d-inline-block" style="width:80px;margin-right: 3px;"> Thời gian: </span>
+                                <input type="text" class="browser-default custom-select " id="datepicker" >
+                                <p class="text-left">
+                                <span class="d-inline-block" style="width:84px"></span>
+                                    <input type="text" class="browser-default custom-select " id="timeformatExample1" placeholder="Giờ xuất phát" asp-for="TimeStart">
+                                </p>
+                                <p class="text-left">
+                                <span class="d-inline-block" style="width:84px"></span>
+                                    <input type="text" class="browser-default custom-select " id="timeformatExample2" placeholder="Giờ đến" asp-for="TimeEnd">
+                                    <span class="changeDate" id="increDate">+</span>
+                                    <span class="changeDate" id="decreDate">-</span>
+                                </p>
+              </p>
+            <div class="text-left">
+                <button class="btn btn-primary btn-sm" type="submit" style="width:120px ">Thêm</button>
+            </div>
+
+            
+        </form>
+        
+
+     </div>
+ </div>
+@section Css{
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css">
+    <style>
+        .browser-default.custom-select {
+           width: 202px;
+        }
+     
+         #increDate:hover{
+             background: lightblue;
+             color: white;
+         }
+
+         #decreDate:hover{
+             background: orange;
+             color: white;
+         }
+        .changeDate{
+            margin-left: 10px;
+            cursor: pointer;
+            background: #3332;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            padding-left: 6px;
+            display: inline-block; 
+        }
+    </style>
+}
+
+
+@section Script{
+    <script src="~/assets/js/jquery.timepicker.min.js"></script>
+     <script>
+        $(function () {
+
+        
+            $('input[id$=datepicker]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            const now = new Date();
+            $("#datepicker").val(now.toLocaleDateString());
+        });
+
+        $('#timeformatExample1').timepicker({ 'timeFormat': 'H:i:s' });
+        $('#timeformatExample2').timepicker({ 'timeFormat': 'H:i:s' });
+    
+        // GET ALL CITY 
+
+        let startPoint = document.querySelector('select[name="StartPoint"]');
+        let endPoint = document.querySelector('select[name="EndPoint"]');
+        
+
+        fetch("https://dc.tintoc.net/app/api-customer/public/provinces")
+        .then(response =>  response.json())
+        .then(data => {
+            let city = '<option> Điểm xuất phát </option>';
+            data.forEach((item,index) => {
+                city += '<option>' + item.name+' </option>';
+              
+            })
+            startPoint.innerHTML = city;
+
+            city = city.replace("Điểm xuất phát", "Điểm đến");
+            endPoint.innerHTML = city;
+        })
+
+        // PICK TIME 
+
+        var date = new Date();
+
+        function getFormattedDate(date) {
+            var year = date.getFullYear();
+
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            
+            return month + '/' + day + '/' + year;
+            }
+
+        
+        $("#datepicker").datepicker({
+                onSelect: function() { 
+                    date = $(this).datepicker('getDate');
+                    date = getFormattedDate(date);
+                }
+        });
+
+        date = getFormattedDate(date);
+    
+
+        $('#timeformatExample1').on('selectTime', function() {
+            var time =  $(this).val();
+            $(this).val(date + ' ' + time);
+        });
+
+        var time =  $('#timeformatExample2').val();
+        $('#timeformatExample2').on('selectTime', function() {
+            time =  $(this).val();
+            $(this).val(date + ' ' + time);
+        });
+
+        $('#increDate').on('click', function(){
+            date = new Date(date);
+            date.setDate(date.getDate() + 1)
+            date = getFormattedDate(date);
+            $('#timeformatExample2').val(date + ' ' + time);
+        })
+
+        $('#decreDate').on('click', function(){
+            date = new Date(date);
+            date.setDate(date.getDate() - 1)
+            date = getFormattedDate(date);
+            $('#timeformatExample2').val(date + ' ' + time);
+        })
+    
+    
+    </script>
+}

@@ -1,0 +1,77 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Employee";
+}
+@model Employee
+<h4>Thêm nhân viên</h4>
+
+<!-- Default form subscription --> 
+ <div class="row">
+     <div class="col-md-6 mx-auto">
+        <form class="text-center border border-light p-5" method="post" action="/admin/employee/create">
+            <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+
+            @if(!string.IsNullOrEmpty(ViewBag.message))
+             {
+                 <div class="alert alert-success">@ViewBag.message</div>
+             }
+
+            <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Họ tên" asp-for="FullName">
+            <input type="text" class="form-control mb-4" id="datepicker" placeholder="Ngày sinh (mm - dd - yyyy)" asp-for="YearOfBirth" asp-format="{0:dd'/'MM'/'yyyy}">
+            <input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="E-mail" asp-for="Email">
+            <input type="text" id="defaultSubscriptionFormPhone" class="form-control mb-4" placeholder="Phone" asp-for="Phone">
+            <input type="text" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="Địa chỉ" asp-for="Address">
+            <select class="browser-default custom-select mb-4" asp-for="Position">
+                <option value="10" selected>Chọn nhiệm vụ</option>
+                <option value="0">Lái Xe</option>
+                <option value="1">Phụ Xe</option>
+            </select >
+                <select style="display:none" class="browser-default custom-select mb-4" asp-for="DriverLicense">
+                <option value="1">B1</option>
+                <option value="2">B2</option>
+                <option value="3">D</option>
+                <option value="4">E</option>
+            </select>
+            <div class="text-left">
+                <button class="btn btn-primary btn-sm" type="submit">Thêm</button>
+            </div>
+
+
+        </form>
+
+     </div>
+ </div>
+@section Css{
+        <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+}
+@section Script{
+    <script>
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat:'mm/dd/yy',
+                changeYear: true,
+                changeMonth: true,
+            });
+
+        });
+        let empType = document.querySelector('#Position');
+          let DriverLicense = document.querySelector('#DriverLicense');
+            if(empType.value == 0   ){
+                DriverLicense.style.display = 'block';
+            }
+            else{
+                                DriverLicense.style.display = 'none';
+            }
+      
+        empType.addEventListener('change', function(){
+            if(empType.value == 0){
+                DriverLicense.style.display = 'block';
+            }
+                else{
+                                DriverLicense.style.display = 'none';
+            }
+        })
+    </script>
+
+    
+}

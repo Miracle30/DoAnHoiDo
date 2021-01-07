@@ -1,0 +1,109 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Employee";
+}
+@model List<Employee>
+<div class="text-right mb-2">
+         <a href="/admin/employee/create" class="btn btn-primary btn-sm">
+             Thêm nhân viên
+         </a>
+</div>
+<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm" >#ID
+      </th>
+      <th class="th-sm">Họ tên
+      </th>
+      <th class="th-sm text-center">Ảnh đại diện
+      </th>
+      <th class="th-sm text-center">Chức vụ
+      </th>
+      <th class="th-sm">Email
+      </th>
+      <th class="th-sm">Phone
+      </th>
+      @* <th class="th-sm">Hành động
+      </th> *@
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+    <tr style="cursor:pointer">
+      <td  onclick="typeRoomDetail(@item.Id)" >@item.Id</td>
+      <td  onclick="typeRoomDetail(@item.Id)" >@item.FullName</td>
+      <td  onclick="typeRoomDetail(@item.Id)" class="text-center"><img src="@item.Avatar" style="width:50px"></td>
+      <td  onclick="typeRoomDetail(@item.Id)" class="text-center">@(@item.Position == 0 ? "Lái Xe" : "Phụ Xe")</td>
+      <td  onclick="typeRoomDetail(@item.Id)" >@item.Email</td>
+      <td  onclick="typeRoomDetail(@item.Id)" >@item.Phone</td>
+      @* <td  style="width:30px" class="text-center">
+        <button data-delete-id="@item.Id" type="button" class="btn btn-danger btn-sm m-0 btn-delete" data-toggle="modal" data-target="#centralModalSm">Ẩn</button>
+      </td> *@
+    </tr>
+    }
+  </tbody>
+</table>
+<!-- Central Modal Small -->
+<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-sm" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn xóa nhân viên này ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm " data-dismiss="modal">ĐÓng</button>
+        <a id="delete-item" href="/" class="btn btn-danger btn-sm">Xóa</a>
+      </div>
+    </div>
+  </div>
+</div>
+@section Css{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <style>
+      .show-message{
+        cursor: pointer;
+      }
+      .show-message:hover{
+         color:blue;
+      }
+    </style>
+}
+@section Script{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable( 
+               {  
+                 "order": [[ 0, "desc" ]]
+               },
+            );
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+        <script>
+        function typeRoomDetail(id){
+          window.location.href = "/admin/employee/" +  id; 
+        }
+      
+        let deleteButton = document.querySelectorAll('.btn-delete');
+        let deleteItem = document.querySelector('#delete-item');
+        deleteButton.forEach(function(item,index){
+          item.addEventListener('click', function(){
+              console.log(this.dataset.deleteId);
+              deleteItem.setAttribute('href','/admin/employee/delete/' +this.dataset.deleteId);
+          })
+        })
+    </script>
+}

@@ -1,0 +1,119 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Giới thiệu";
+}
+
+ <!-- MAIN  -->
+    <main class="about">
+        <div class="container">
+            <h2 class="about__heading display-4 my-5 py-3">
+                GIỚI THIỆU WANDERLUST
+            </h2>
+            <div class="row">
+                <div class="col-3">
+                    <div class="about__sidebar">
+                        <ul class="about__sidebar-list">
+                            <li class="about__sidebar-item d-flex justify-content-between align-items-center active">
+                                <span class="active">
+                                    GIỚI THIỆU
+                                </span>
+                                <i class="fas fa-angle-right active"></i>
+                            </li>
+                            <li class="about__sidebar-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    TẦM NHÌN
+                                </span>
+                                <i class="fas fa-angle-right"></i>
+                            </li>
+                            @* <li class="about__sidebar-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    SỨ MỆNH
+                                </span>
+                                <i class="fas fa-angle-right "></i>
+                            </li> *@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="about__img-bg text-center mb-4">
+                        <img src="https://scr.vn/wp-content/uploads/2020/07/H%C3%ACnh-n%E1%BB%81n-t%E1%BA%BFt-2021-cho-laptop.jpg"
+                            alt="" class="w-100">
+                    </div>
+                    <ul class="about__content-list">
+                        <li class="about__content-item active">
+                            <h4 class="about__title  ">
+                                GIỚI THIỆU
+                            </h4>
+                            <p class="about__content">
+                                Đồ án chuyên ngành: Hệ thống quản lý đặt vé xe
+                                GVHD: Ths Võ Hoàng Khang
+                                Sinh viên thực hiện: Đặng Tuấn Dương
+                                MSSV: 1711062183
+                                Shout out to my class 17DTHC5 
+
+                                            
+                            </p>
+                        </li>
+                        <li class="about__content-item">
+                            <h4 class="about__title  ">
+                                TẦM NHÌN
+                            </h4>
+                            <p class="about__content">
+                            <h5 style="font-size: 24px; font-weight: 400;" class="my-4">Góp phần cho hành trình của bạn
+                                hạnh phúc hơn</h5>
+                            
+                                Mong muốn có thể giúp khách hàng đặt vé tiện lợi hơn <br>
+                                Giúp nhà xe hoạt động tốt hơn
+                            </p>
+                        </li>
+                        @* <li class="about__content-item">
+                            <h4 class="about__title ">
+                                Sứ mệnh
+                            </h4>
+                            <h5 style="font-size: 24px; font-weight: 400;" class="my-4">Góp phần cho hành trình của bạn
+                                hạnh phúc hơn</h5>
+                            <p class="about__content">
+                                Mỗi chúng ta đều sẽ có những chuyến đi và chuyến đi có thể sẽ là khởi đầu cho những hành
+                                trình thú vị và hạnh phúc, thay đổi cuộc đời của mỗi người. Vì vậy, sứ mệnh mà VeXeRe
+                                hướng tới không chỉ gói gọn là những chuyến đi, mà đó chính là hành trình cuộc đời của
+                                mỗi người. VeXeRe mong muốn đồng hành và góp phần cho mỗi hành trình ấy sẽ hạnh phúc
+                                trọn vẹn hơn.
+
+                                Đã hạnh phúc thì sẽ có hạnh phúc hơn: đó có thể là những chuyến đi giá rẻ hơn tạo điều
+                                kiện cho nhiều người được đi du lịch hơn, nhiều người được tiếp cận với những dịch vụ
+                                tốt hơn, với nhiều trải nghiệm hạnh phúc và ý nghĩa hơn.
+                            </p>
+                        </li> *@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+@section Script{
+    <script>
+        let aboutSiderbarItem = document.querySelectorAll(".about__sidebar-list .about__sidebar-item ");
+        let aboutSiderbarItemIcon = document.querySelectorAll(".about__sidebar-list .about__sidebar-item i");
+        console.log(aboutSiderbarItemIcon);
+
+        let aboutItem = document.querySelectorAll(".about__content-item");
+        aboutSiderbarItem.forEach((item, index) => {
+            item.addEventListener('click', function () {
+                aboutSiderbarItem.forEach(item => {
+                    item.classList.remove('active');
+                })
+                aboutSiderbarItemIcon.forEach(item => {
+                    item.classList.remove('active');
+                })
+                aboutItem.forEach(item => {
+                    item.classList.remove('active');
+                })
+                this.classList.add('active');
+                aboutSiderbarItemIcon[index].classList.add('active');
+                aboutItem[index].classList.add('active');
+
+            })
+        })        
+    </script>
+}

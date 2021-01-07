@@ -1,0 +1,180 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Employee";
+}
+@model Car
+<h4>Thêm mới Xe</h4>
+
+<!-- Default form subscription --> 
+ <div class="row">
+     <div class="col-md-6 mx-auto">
+        <form class="text-center border border-light p-5" method="post" action="/admin/car/create" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+
+            @if(!string.IsNullOrEmpty(ViewBag.message))
+             {
+                 <div class="alert alert-success">@ViewBag.message</div>
+             }
+
+            <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Biển số xe" asp-for="CarCode">
+           <div class="form-group">
+            <textarea placeholder="Thông báo" class="form-control" id="exampleFormControlTextarea3" rows="7" asp-for="Description"></textarea>
+            </div>
+            <input type="text" id="defaultSubscriptionFormSeatNumber" class="form-control mb-4" placeholder="Số ghế" asp-for="SeatNumber">
+
+              <div class="form-upload d-flex flex-start position-relative">
+                  <input type="hidden" asp-for="Thumbnail" value="">
+                  <input type="file"  class="position-absolute">
+                  <button type="button" class="btn btn-info btn-rounded btn-sm" style="width:120px  ">Ảnh đại diện</button><br>
+            </div>
+                  <div class="text-center my-2 position-relative">
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                          <img class="mt-2"  id="profile-thumbnail" style="width:80px" >
+                      </span>
+                  </div>
+
+            <div class="form-upload d-flex flex-start position-relative">
+                  <input id="i-images" type="file" class="position-absolute">
+                  <button type="button" class="btn btn-info btn-rounded btn-sm" style="width:120px  ">Ảnh </button><br>
+                  @* <input type="hidden" asp-for="CarImages"> *@
+            </div>
+            <div class="text-center my-5 d-flex justify-content-around">
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+             </div>
+            <div class="text-center my-5 d-flex justify-content-around">
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+                      <span class="d-inline-block" style="width:100px; height:100px; border: 1px dotted gray">
+                            <img class="images mt-2"  style="width:80px" >
+                      </span>
+             </div>
+
+
+            <div class="text-left">
+                <button class="btn btn-primary btn-sm" type="submit" style="width:120px ">Thêm</button>
+            </div>
+
+
+        </form>
+        
+
+     </div>
+ </div>
+@section Css{
+        <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+        <style>
+        .form-upload input[type="file"]{
+            width: 120px;
+            z-index: 999;
+            opacity: 0;
+        }
+        </style>
+}
+@section Script{
+    <script>
+        $(function () {
+            $('input[id$=datepicker]').datepicker({
+                dateFormat:'mm/dd/yy',
+                changeYear: true,
+                changeMonth: true,
+            });
+    
+        });
+    </script>
+        <script>
+
+        let inputEditThumbnail = document.querySelector('.form-upload input[type="file"]');
+
+        let thumbnailUrl = document.querySelector('input[name="Thumbnail"]');
+        inputEditThumbnail.addEventListener('change', function() {
+        let Thumbnail = document.querySelector('#profile-thumbnail');
+        
+        var url = "/admin/car/upload/thumbnail";
+            var formData = new FormData();
+            formData.append("Thumbnail", inputEditThumbnail.files[0]);
+
+        fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    data.thumbnail = data.thumbnail.replace('\\', '/');
+                    Thumbnail.setAttribute("src", data.thumbnail);
+                    thumbnailUrl.value = data.thumbnail;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        })
+
+        let inputUploadImages = document.querySelector('#i-images');
+        let dataImages        = [];
+        let imageUrls         = document.querySelector('input[name="CarImages"]');
+        let images            = document.querySelectorAll('.images');
+        let indexImages       = 0;
+        inputUploadImages.addEventListener('change', function() {
+
+            if(indexImages > 7){
+                return;
+            }
+            else{
+
+                let Thumbnail = document.querySelector('#profile-thumbnail');
+                
+                var url = "/admin/car/upload/thumbnail";
+                    var formData = new FormData();
+                    formData.append("Thumbnail", inputUploadImages.files[0]);
+
+                fetch(url, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            
+                            //dataImages.push({url: data.thumbnail, size: data.fileSize});
+                            //imageUrls.value = JSON.stringify(dataImages);
+                            data.thumbnail = data.thumbnail.replace('\\', '/');
+                            images[indexImages].setAttribute("src", data.thumbnail);
+
+                            input = document.createElement('input');
+                            input.type='hidden';
+                            input.value = data.thumbnail;
+                            input.name ="CarImages["+indexImages+"].url";
+                            images[indexImages].after(input);
+
+                            input = document.createElement('input');
+                            input.type='hidden';
+                            input.value = data.fileSize;
+                            input.name ="CarImages["+indexImages+"].size";
+                            images[indexImages].after(input);
+
+                            indexImages ++;
+
+                        })
+                        .catch(err => {
+                            console.log(err);
+                 })
+            }
+        })
+      </script>
+}

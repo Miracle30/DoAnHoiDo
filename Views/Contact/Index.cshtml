@@ -1,0 +1,70 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Liên hệ";
+}
+
+@model ContactViewModel
+
+<!-- MAIN  -->
+    <main class="contact">
+        <div class="container">
+            <h2 class="contact__heading display-4 my-5 py-3">
+                LIÊN HỆ VỚI BQL NHÀ XE
+            </h2>
+            <div class="row">
+                <div class="col-3">
+                    <span>Nhà xe Wander Lust</span>
+                    @* <span>Goolge Map</span> *@
+                </div>
+                <div class="col-9">
+                    <div class="contact__content">
+                        <h4 class="contact__heading">
+                            PHẢN HỒI VỀ XE
+                        </h4>
+                        <form method="post" asp-action="create" asp-controller="contact" class="contact__form">
+                            <div asp-validation-summary="All" class="alert alert-danger text-left" style="font-size:16px;margin-top:20px; padding:0 15px;border:0" ></div>
+                           @if(!string.IsNullOrEmpty(ViewBag.message))
+                            {
+                                <div class="alert alert-success">@ViewBag.message</div>
+                            }
+                            <div class="contact__form-group">
+                                <label for="" class="contact__form-label" asp-for="Subject">
+                                    Biển số xe
+                                </label>
+                                <input type="text" class="contact__form-input" asp-for="Subject">
+                            </div>
+                            <div class="contact__form-group">
+                                <label for="" class="contact__form-label" asp-for="Message">
+                                    Nội dung phản hồi
+                                </label>
+                                <textarea class="contact__form-textarea" id="" cols="30" rows="5" asp-for="Message"></textarea>
+                            </div>
+
+                            <h4 class="contact__heading">
+                                THÔNG TIN NGƯỜI PHẢN HỒI
+                            </h4>
+                            <div class="contact__form-group">
+                                <label for="" class="contact__form-label"   asp-for="Name">
+                                    Họ tên
+                                </label>
+                                <input type="text" class="contact__form-input"  asp-for="Name">
+                            </div>
+                            <div class="contact__form-group">
+                                <label for="" class="contact__form-label"  asp-for="Phone">
+                                    Điện thoại
+                                </label>
+                                <input type="text" class="contact__form-input" asp-for="Phone">
+                            </div>
+                            <div class="contact__form-group">
+                                <label for="" class="contact__form-label"  asp-for="Email">
+                                    Email
+                                </label>
+                                <input type="text" class="contact__form-input" asp-for="Email">
+                            </div>
+                            <button class="btn contact__btn" type="submit">GỬi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

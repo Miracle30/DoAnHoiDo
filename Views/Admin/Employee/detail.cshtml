@@ -1,0 +1,104 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Employee";
+}
+@model Employee
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3">Hồ sơ nhân viên</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Chức vụ</h6>
+                            <p>
+                                @(Model.Position == Position.MainDriver ? "Lái xe" : "Phụ xe" )
+                            </p>
+                            @if(Model.DriverLicense != 0){
+                                <h6>Bằng lái</h6>
+                                <p>@Model.DriverLicense</p>
+                            }
+                            <h6>Địa chỉ</h6>
+                            <p>
+                                @Model.Address
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Thông số</h6>
+                            <span class="badge badge-primary"><i class="fa fa-user"></i> @Model.CarHistories.Count() chuyến </span>
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Lịch sử hoạt động</h5>
+                            <table class="table table-sm table-hover table-striped">
+                                <tbody> 
+                                    @if(Model.CarHistories.Count() > 0)
+                                    {
+                                        @foreach (var item in Model.CarHistories)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <strong>@item.CreatedAt.ToString("h:m d / M / yyyy") - @Model.FullName</strong> được phân công lái xe <strong></strong>
+                                                </td>
+                                            </tr>
+                                            
+                                        }
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="edit">
+        <form class="text-center border border-light p-5" method="post" action="/admin/employee/update/@Model.Id">
+            @if(!string.IsNullOrEmpty(ViewBag.message))
+             {
+                 <div class="alert alert-success">@ViewBag.message</div>
+             }
+
+            <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Họ tên" asp-for="FullName">
+            <input type="text" class="form-control mb-4" id="datepicker" placeholder="Ngày sinh (mm - dd - yyyy)" asp-for="YearOfBirth" asp-format="{0:dd'/'MM'/'yyyy}">
+            <input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="E-mail" asp-for="Email">
+            <input type="text" id="defaultSubscriptionFormPhone" class="form-control mb-4" placeholder="Phone" asp-for="Phone">
+            <input type="text" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="Địa chỉ" asp-for="Address">
+            <select class="browser-default custom-select mb-4" asp-for="Position">
+                <option value="10" selected>Chọn nhiệm vụ</option>
+                <option value="0">Lái Xe</option>
+                <option value="1">Phụ Xe</option>
+            </select >
+                <select style="display:none" class="browser-default custom-select mb-4" asp-for="DriverLicense">
+                <option value="1">B1</option>
+                <option value="2">B2</option>
+                <option value="3">D</option>
+                <option value="4">E</option>
+            </select>
+            <div class="text-left">
+                <button class="btn btn-primary btn-sm" type="submit">Thêm</button>
+            </div>
+
+
+        </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1 text-center">
+            <img style="width:200px" src="@Model.Avatar" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            <h6 class="mt-2">@Model.FullName</h6>
+            @* <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control">Choose file</span>
+            </label> *@
+        </div>
+    </div>
+</div>

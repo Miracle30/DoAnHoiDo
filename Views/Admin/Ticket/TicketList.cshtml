@@ -1,0 +1,191 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "List Ticket";
+}
+
+@model List<TicketViewModel>
+<div class="row">
+   @{
+        var i = 1;
+    }
+  @foreach (var item in Model)
+  {
+    <div class="ticket mx-3 mb-3" onclick="detail(@item.Id)">
+      <div class="ticket__content"> 
+        @if((int)item.StatusTicket == 1){
+
+        <p  class="status-ticket success ">
+          <a href="" class="">Đã đặt</a>
+        </p>
+
+        }
+        else if( (int)item.StatusTicket == 0){
+          <p  class="status-ticket warning ">
+            <a href="" class="">Trống</a>
+          </p>
+        }
+
+        else if ((int)item.StatusTicket == 2){
+                  <p  class="status-ticket danger">
+            <a href="" class="">Hủy</a>
+          </p>
+        }
+
+        else{
+             <p  class="status-ticket danger">
+            <a href="" class="">Hết hạn</a>
+          </p>
+        }
+        <p class="text-center pt-4">@item.SeatNumberId</p>
+        <div class="px-3">
+            <p >@item.Price đ</p>
+            <p >@item.Name</p>
+            <p >@item.Address</p>
+            <p ></p>
+            <p >@ViewBag.route.StartPoint - @ViewBag.route.EndPoint</p>
+            <p style="font-size:14px">@(ViewBag.route.TimeStart.ToString("HH:MM tt - dd/MM/yyyy"))</p>
+        </div>
+           @if(item.BookTickets.Count > 0){
+              <span data-show-alert="#modal-alert-@i" class="badge badge-info ticket-alert ">@item.BookTickets.Count</span>
+           }
+          <div class="modal-alert position-absolute" id="modal-alert-@i">
+                @foreach (var bookTicket in item.BookTickets)
+                {
+                        <p><span style="display:inline-block; width:75px">Thời gian:</span> @bookTicket.CreatedAt.ToString("dd/MM/yyyy") </p>
+                        <p><span style="display:inline-block; width:75px">Khách: @bookTicket.FullName</span></p>
+                        <p><span style="display:inline-block; width:75px">Số giờ: @bookTicket.Phone</span> </p>
+                        <hr>
+                    
+                }
+             </div>
+      </div>
+    </div>
+         i++;
+  }
+
+</div>
+</div>
+    
+    
+
+@section Css{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <style>
+        .ticket p{
+            font-size: 14px;
+        }
+         .ticket {
+        position: relative;
+        box-sizing: border-box;
+        width: 223px;
+        height: 350px;  
+        padding: 20px;
+        border-radius: 10px;
+        background: #fbfbfb;
+        cursor: pointer;
+    }
+        .ticket:before, .ticket:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            height: 6px;
+            width: 190px;
+        }
+        .ticket:before {
+            top: -5px;
+            background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -8px / 16px 16px repeat-x;
+        }
+        .ticket:after {
+            bottom: -5px;
+            background: radial-gradient(circle, transparent, transparent 50%, #fbfbfb 50%, #fbfbfb 100%) -7px -2px / 16px 16px repeat-x;
+        }
+        .ticket__content {
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            border: 6px solid #d8d8d8;
+            position: relative;
+        }
+        .status-ticket{
+            display: inline-block;
+            text-align: center;
+            width: 60px;
+            position: absolute;
+            right: -5px;
+            top: -5px; 
+            padding: 0 10px;
+            font-size: 10px;
+        }
+
+        .status-ticket.success{
+            background: #20c997;
+
+        }
+        .status-ticket.warning{
+            background: #ffc107 ;
+        }
+
+        .status-ticket.danger{
+            background: #dc3545 ;
+        }
+        .status-ticket a{
+            font-size: 10px;
+            color: white;
+        }
+
+
+            .ticket-alert{
+             position:absolute;
+             right:10px;
+             bottom:10px;
+             cursor: pointer;
+         }
+         .modal-alert{
+             top: 7px;
+            right: 32px;
+            width: 200px;
+            background: #fff3b5;
+            padding: 15px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px  #3332;
+            font-size: 14px;
+            z-index: 999;
+            display: none;
+         }
+    </style>
+}
+@section Script{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable( 
+               {  
+                 "order": [[ 0, "desc" ]],
+                  "columnDefs": [
+                    { "width": "5%", "targets": 0 },
+                    { "width": "15%", "targets": 4 },
+                  ]
+               },
+            );
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+        <script>
+         let roomAlerts = document.querySelectorAll('.ticket-alert');
+         console.log(roomAlerts);
+         roomAlerts.forEach(item => {
+            item.addEventListener('mouseenter', function(){
+                let  alert = document.querySelector(this.dataset.showAlert);
+                alert.style.display = 'block';
+            })
+            item.addEventListener('mouseleave', function(){
+                let  alert = document.querySelector(this.dataset.showAlert);
+                alert.style.display = 'none';
+            })
+         })
+
+        function detail(id){
+            window.location.href = "/admin/ticket/" + id;
+        } 
+    </script>
+}

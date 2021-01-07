@@ -1,0 +1,165 @@
+@inject SignInManager<ApplicationUser> SignInManager;
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander LUST - @ViewBag.Title</title>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/mdbootstrap.min.css">
+    <script src="~/assets/js/fontawesome.js" crossorigin="anonymous"></script>
+    <link href="~/assets/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/assets/css/app.css">
+    
+    
+    @if(IsSectionDefined("Css"))
+    {
+        @RenderSection("Css", required:true)
+    }
+</head>
+
+<body>
+
+    <!-- NAVIGATION  -->
+    <nav class="nav">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="nav__logo">
+                <a href="/home" class="nav__logo-link">
+                    <img class="img-fluid" src="" alt="">
+                </a>
+            </div>
+            <div class="nav__icon-bar">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav__list d-flex">
+                <li class="nav__item"><a href="/home" class="nav__link">Trang chủ</a></li>
+                <li class="nav__item"><a href="/ticket" class="nav__link">Vé xe</a></li>
+                <li class="nav__item"><a href="/blog" class="nav__link">Tin tức</a></li>
+                <li class="nav__item"><a href="/about" class="nav__link">Giới thiệu</a></li>
+                <li class="nav__item"><a href="/contact" class="nav__link">Liên hệ</a></li>
+
+                @if(SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav__item">
+                        <form method="post" asp-action="logout" asp-controller="account">
+                            <button type="submit" class="nav-ink btn-btn-link py-0">
+                                Đăng xuất @User.Identity.Name
+                            </button>
+                        </form>
+                    </li>
+                }
+                else{
+                 <li class="nav__item"><a asp-action="login" asp-controller="account" class="nav__link hotline">Đăng nhập</a></li>
+                }
+            </ul>
+        </div>
+    </nav>  
+
+    @RenderBody()
+
+    <!-- FOOTER  -->
+    
+    @* <footer class="footer">
+        <div class="container">
+            <div class="footer__categories">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h4 class="footer__category-heading">
+                            Tin tức
+                        </h4>
+                        <ul class="footer__category-news">
+                            <li class="footer__news-item">
+                                <a href="#" class="footer__news-link">Xe giường nằm Limo – đỉnh cao mới của ngành
+                                    xe khách - sở hữu nhiều dòng xe Limo đời mới với ghế nằm cao cấp, không gian riêng biệt, có phương tiện giải trí, wifi, tivi nhiều kênh phim, hài, nhạc theo sở thích, tai nghe riêng, 2 ổ sạc dành cho điện thoại và máy tính bảng và còn có gối hơi và mền tiêu chuẩn.</a>
+                            </li>                   
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h4 class="footer__category-heading">
+                            Tuyến đường
+                        </h4>
+                        <ul class="footer__category-street">
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Bình Dương - Đồng Nai</a>
+                            </li>
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Đắc Lắc - Sơn La</a>
+                            </li>
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Yên Bái - Hải Dương</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h4 class="footer__category-heading">
+                            Xe Limo
+                        </h4>
+                        <ul class="footer__category-street">
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Limo Bình Dương - Đồng Nai</a>
+                            </li>
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Limo Đắc Lắc - Sơn La</a>
+                            </li>
+                            <li class="footer__street-item">
+                                <a href="" class="footer__street-link">Limo Yên Bái - Hải Dương</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr />            
+    </footer> *@
+
+
+     <!-- COPYRIGHT  -->
+    @* <div class="copy-right text-center">
+        <h4 class="copy-right__heading">Công ty cổ phần Vexere</h4>
+        <p class="copy-right__desc">
+            Địa chỉ đăng ký kinh doanh: Số 12 Lê Lợi-tp Vinh- Nghệ An- Việt Nam
+        </p>
+        <p class="copy-right__desc">
+            Địa chỉ: Số 12 Lê Lợi-tp Vinh- Nghệ An- Việt Nam
+        </p>
+        <p class="copy-right__desc">
+            Giấy chứng nhận ĐKKD số 0312387105 do Sở KH và ĐT TP. Vinh cấp lần đầu ngày 25/7/2013
+        </p>
+        <p class="copy-right__desc">
+            Bản quyền © 2019 thuộc về thương hiệu VeXeRe
+        </p>
+    </div> *@
+
+    
+    <script src="~/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="~/assets/js/jquery-ui.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/mdbootstrap.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <script src="owlcarousel/owl.carousel.js"></script>
+
+    @if(IsSectionDefined("Script"))
+    {
+        @RenderSection("Script", required:true)
+    }
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                document.getElementsByClassName("navbar").style.padding = "30px 10px";
+        } else {
+                document.getElementsByClassName("navbar").style.padding = "80px 10px";
+        }
+    }   
+    </script>
+
+
+
+</body>
+
+</html>
