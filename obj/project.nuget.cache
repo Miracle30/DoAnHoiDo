@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0BWk0z2xFOVxAdRt1ZW/LsyXQlJWhTSbAg3esMBTDdXJb/bjmmwBn+XQQqWPlfPwsTa/l88UVl/tGAl2ALRc6Q==",
+  "dgSpecHash": "xf0bSXYsWLFUcE38oIgXssFZnBz9tNww+LrvPL4E+CQbFV2glrS0dk1redgNTDluhMWlXd4lG9YnXper36HZ6w==",
   "success": true,
-  "projectFilePath": "G:\\DACN\\dacn\\CarBooking-1.csproj",
+  "projectFilePath": "G:\\DACN\\dacn\\dacn\\CarBooking-1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.3\\microsoft.aspnetcore.cryptography.internal.3.1.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.3\\microsoft.aspnetcore.cryptography.keyderivation.3.1.3.nupkg.sha512",
@@ -38,7 +38,9 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.collections.immutable\\1.7.0\\system.collections.immutable.1.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.0\\system.diagnostics.diagnosticsource.4.7.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,5 @@
 {
-  "FilePath": "g:\\DACN\\dacn\\CarBooking-1.csproj",
+  "FilePath": "g:\\DACN\\dacn\\dacn\\CarBooking-1.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,153 +14392,153 @@
   "RootNamespace": "CarBooking",
   "Documents": [
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Car\\Detail.cshtml",
-      "TargetPath": "Views\\Admin\\Car\\Detail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Employee\\index.cshtml",
-      "TargetPath": "Views\\Admin\\Employee\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Post\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Post\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Dashboard\\index.cshtml",
-      "TargetPath": "Views\\Admin\\Dashboard\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Car\\Create.cshtml",
-      "TargetPath": "Views\\Admin\\Car\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Contact\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Contact\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Account\\Register.cshtml",
-      "TargetPath": "Views\\Account\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Blog\\Detail.cshtml",
-      "TargetPath": "Views\\Blog\\Detail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Post\\Create.cshtml",
-      "TargetPath": "Views\\Admin\\Post\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\About\\index.cshtml",
-      "TargetPath": "Views\\About\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Contact\\Index.cshtml",
-      "TargetPath": "Views\\Contact\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Account\\Login.cshtml",
-      "TargetPath": "Views\\Account\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Account\\Profile.cshtml",
-      "TargetPath": "Views\\Admin\\Account\\Profile.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Route\\Create.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Route\\Create.cshtml",
       "TargetPath": "Views\\Admin\\Route\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Post\\Detail.cshtml",
-      "TargetPath": "Views\\Admin\\Post\\Detail.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Account\\Register.cshtml",
+      "TargetPath": "Views\\Account\\Register.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Order\\detail.cshtml",
-      "TargetPath": "Views\\Admin\\Order\\detail.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Blog\\Detail.cshtml",
+      "TargetPath": "Views\\Blog\\Detail.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Employee\\detail.cshtml",
-      "TargetPath": "Views\\Admin\\Employee\\detail.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\About\\index.cshtml",
+      "TargetPath": "Views\\About\\index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Ticket\\TicketList.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Ticket\\TicketList.cshtml",
       "TargetPath": "Views\\Admin\\Ticket\\TicketList.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Car\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Car\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Ticket\\Detail.cshtml",
-      "TargetPath": "Views\\Admin\\Ticket\\Detail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Route\\Index.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Route\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Route\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Ticket\\Index.cshtml",
-      "TargetPath": "Views\\Ticket\\Index.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Post\\Create.cshtml",
+      "TargetPath": "Views\\Admin\\Post\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Shared\\_LayoutAdmin.cshtml",
-      "TargetPath": "Views\\Shared\\_LayoutAdmin.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Account\\Login.cshtml",
+      "TargetPath": "Views\\Account\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Ticket\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Ticket\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Blog\\Index.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Blog\\Index.cshtml",
       "TargetPath": "Views\\Blog\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\_ViewImports.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Employee\\detail.cshtml",
+      "TargetPath": "Views\\Admin\\Employee\\detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Account\\Profile.cshtml",
+      "TargetPath": "Views\\Admin\\Account\\Profile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Post\\Detail.cshtml",
+      "TargetPath": "Views\\Admin\\Post\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Dashboard\\index.cshtml",
+      "TargetPath": "Views\\Admin\\Dashboard\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Employee\\create.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Ticket\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Ticket\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Car\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Car\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Ticket\\Detail.cshtml",
+      "TargetPath": "Views\\Admin\\Ticket\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Employee\\create.cshtml",
       "TargetPath": "Views\\Admin\\Employee\\create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\DACN\\dacn\\Views\\Admin\\Order\\Index.cshtml",
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Employee\\index.cshtml",
+      "TargetPath": "Views\\Admin\\Employee\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Post\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Post\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Car\\Create.cshtml",
+      "TargetPath": "Views\\Admin\\Car\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Contact\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Contact\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Car\\Detail.cshtml",
+      "TargetPath": "Views\\Admin\\Car\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Order\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Order\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Admin\\Order\\detail.cshtml",
+      "TargetPath": "Views\\Admin\\Order\\detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Ticket\\Index.cshtml",
+      "TargetPath": "Views\\Ticket\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Contact\\Index.cshtml",
+      "TargetPath": "Views\\Contact\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "g:\\DACN\\dacn\\dacn\\Views\\Shared\\_LayoutAdmin.cshtml",
+      "TargetPath": "Views\\Shared\\_LayoutAdmin.cshtml",
       "FileKind": "mvc"
     }
   ],

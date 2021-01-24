@@ -40,6 +40,7 @@
                 <form class="header__form-search d-flex justify-content-center">
                     <div>
                         <i class="fas fa-map-marker-alt"></i>
+
                         <select class="select-start-point header__form-search-input" name="states[]"
                             multiple="multiple">
                             <optgroup label="Điểm đi">
@@ -55,6 +56,7 @@
                     </div>
                     <div>
                         <i class="fas fa-map-marker-alt"></i>
+                        
                         <select class="select-end-point header__form-search-input" name="states[]" multiple="multiple">
                             <optgroup label="Tỉnh thành phố">
                                 <option>Lâm Đồng</option>
@@ -315,6 +317,7 @@
     
 @section Script{
     <script src="~/assets/js/select2.min.js"></script>
+    <script src="~/assets/js/district.js"></script>
        <script>
 
         $(function () {
@@ -324,7 +327,6 @@
             const now = new Date();
             $("#datepicker").val(now.toLocaleDateString('en-GB'));
         });
-
 
         $(document).ready(function () {
             $(".select-start-point").select2({

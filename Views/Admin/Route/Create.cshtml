@@ -81,6 +81,7 @@
 
 @section Script{
     <script src="~/assets/js/jquery.timepicker.min.js"></script>
+    <script src="~/assets/js/district.js"></script>
      <script>
         $(function () {
 
@@ -100,22 +101,17 @@
         let startPoint = document.querySelector('select[name="StartPoint"]');
         let endPoint = document.querySelector('select[name="EndPoint"]');
         
-
-        fetch("https://dc.tintoc.net/app/api-customer/public/provinces")
-        .then(response =>  response.json())
-        .then(data => {
-            let city = '<option> Điểm xuất phát </option>';
-            data.forEach((item,index) => {
-                city += '<option>' + item.name+' </option>';
+         let city = '<option> Điểm xuất phát </option>';
+            district.LtsItem.forEach((item,index) => {
+                console.log(item)
+                city += '<option>' + item.Title+' </option>';
               
             })
             startPoint.innerHTML = city;
 
             city = city.replace("Điểm xuất phát", "Điểm đến");
             endPoint.innerHTML = city;
-        })
-
-        // PICK TIME 
+       
 
         var date = new Date();
 

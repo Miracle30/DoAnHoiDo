@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\DACN\\dacn\\CarBooking-1.csproj": {}
+    "G:\\DACN\\dacn\\dacn\\CarBooking-1.csproj": {}
   },
   "projects": {
-    "G:\\DACN\\dacn\\CarBooking-1.csproj": {
+    "G:\\DACN\\dacn\\dacn\\CarBooking-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\DACN\\dacn\\CarBooking-1.csproj",
+        "projectUniqueName": "G:\\DACN\\dacn\\dacn\\CarBooking-1.csproj",
         "projectName": "CarBooking-1",
-        "projectPath": "G:\\DACN\\dacn\\CarBooking-1.csproj",
+        "projectPath": "G:\\DACN\\dacn\\dacn\\CarBooking-1.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "G:\\DACN\\dacn\\obj\\",
+        "outputPath": "G:\\DACN\\dacn\\dacn\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -73,6 +75,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.11, 3.1.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -81,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
